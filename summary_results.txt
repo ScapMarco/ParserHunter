@@ -1,0 +1,143 @@
+
+
+
+
+####################################################################################################################################
+
+    # No cross Weighted, Si sampler, Optimized by Recall, usa "analyze_validation_data.py" to find the best parameters (not using the json file)
+    # Safetorch (Mean)
+    #   Graph SAGE: 0.90    -> No tutti 1 o 0
+    #   RGCN: 0.90          -> No tutti 1 o 0
+    #   GCN: 0.90           -> Tutti 1 o 0
+    #   GAT: 0.85           -> Tutti 1 o 0 su 4 binari / 10
+    # Asm2Vec (Mean)
+    #   Graph SAGE: 0.80    -> No tutti 1 o 0
+    #   RGCN: 0.74          -> No Tutti 1 o 0
+    #   GCN: 0.79           -> No Tutti 1 o 0
+    #   GAT: 0.83           -> Tutti 1 o 0 su 1 binari / 10
+
+
+
+    # No cross Weighted, Si sampler, Optimized by Recall, usa  the json file to find the best parameters
+    # Safetorch (Mean)
+    #   Graph SAGE: 0.90  -> No tutti 1 o 0
+    #   RGCN: 0.90        -> No tutti 1 o 0
+    #   GCN: 0.90         -> Tutti 1 o 0 
+    #   GAT: 0.85         -> Tutti 1 o 0 su 4 binari / 10
+    # Asm2Vec (Mean)
+    #   Graph SAGE: 0.80 -> Non tutti 1 o 0 
+    #   RGCN: 0.74      -> No Tutti 1 o 0
+    #   GCN: 0.76       -> Tutti 1 o 0
+    #   GAT:  0.83      -> Tutti 1 o 0 su 2 binari / 10
+
+####################################################################################################################################
+
+
+    # Si cross Weighted, Si sampler, Optimized by Recall, usa "analyze_validation_data.py" to find the best parameters (not using the json file)
+    # Safetorch (Mean)
+    #   Graph SAGE: 0.93 -> Tutti 1 o 0 su 1 eseguibile / 10
+    #   RGCN: 0.90 -> Non tutti 1 o 0
+    #   GCN: 0.83 -> Non tutti 1 o 0
+    #   GAT: 0.85 -> Tutti 1 o 0 su 8 eseguibile / 10
+    # Asm2Vec (Mean)
+    #   Graph SAGE: 0.79 -> Non tutti 1 o 0
+    #   RGCN: 0.82 -> Non tutti 1 o 0
+    #   GCN: 0.73 -> Non tutti 1 o 0
+    #   GAT: 0.77 -> Non tutti 1 o 0
+
+
+
+    # Si cross Weighted, Si sampler, Optimized by Recall, usa  the json file to find the best parameters
+    # Safetorch (Mean)
+    #   Graph SAGE: 0.93 -> Tutti 1 o 0 su 1 eseguibile / 10
+    #   RGCN: 0.90 -> Non tutti 1 o 0
+    #   GCN: 0.83 -> Non tutti 1 o 0
+    #   GAT: 0.85 -> Tutti 1 o 0 su 8 eseguibile / 10
+    # Asm2Vec (Mean)
+    #   Graph SAGE: 0.79 -> Non tutti 1 o 0
+    #   RGCN: 0.82 -> Non tutti 1 o 0
+    #   GCN: 0.73 -> Non tutti 1 o 0
+    #   GAT: 0.77 -> Non tutti 1 o 0
+
+
+####################################################################################################################################
+
+
+    # No cross Weighted, Si sampler, Optimized by f1-Score, usa "analyze_validation_data.py" to find the best parameters (not using the json file)
+    # Safetorch (Mean)
+    #   Graph SAGE: 0.92 -> Non tutti 1 o 0
+    #   RGCN: 0.89 -> Non tutti 1 o 0
+    #   GCN: 0.90 -> Tutti 1 o 0
+    #   GAT: 0.82 -> Non tutti 1 o 0
+    # Asm2Vec (Mean)
+    #   Graph SAGE: 0.81 -> Non tutti 1 o 0
+    #   RGCN: 0.78 -> Non tutti 1 o 0
+    #   GCN: 0.76 -> Non tutti 1 o 0
+    #   GAT: 0.77 -> Non tutti 1 o 0
+
+
+
+    # No cross Weighted, Si sampler, Optimized by f1-Score, usa  the json file to find the best parameters
+    # Safetorch (Mean)
+    #   Graph SAGE: 0.92 -> Non tutti 1 o 0
+    #   RGCN: 0.89 -> Non tutti 1 o 0
+    #   GCN: 0.73 -> Non tutti 1 o 0
+    #   GAT: 0.82 -> Non tutti 1 o 0
+    # Asm2Vec (Mean)
+    #   Graph SAGE: 0.73 -> Non tutti 1 o 0
+    #   RGCN: 0.76 -> Non tutti 1 o 0
+    #   GCN: 0.72 -> Non tutti 1 o 0
+    #   GAT: 0.72 -> Non tutti 1 o 0
+
+
+
+####################################################################################################################################
+
+
+    # Si cross Weighted, Si sampler, Optimized by f1-Score, usa "analyze_validation_data.py" to find the best parameters (not using the json file)
+    # Safetorch (Mean)
+    #   Graph SAGE: 0.95 -> Tutti 1 o 0 su 3 eseguibili / 10
+    #   RGCN: 0.90 -> Non tutti 1 o 0
+    #   GCN: 0.90 -> Tutti 1 o 0 su 5 eseguibili / 10
+    #   GAT: 1 -> Tutti 1 o 0
+    # Asm2Vec (Mean)
+    #   Graph SAGE: 0.81 -> Non tutti 1 o 0
+    #   RGCN: 0.83 -> Non tutti 1 o 0
+    #   GCN: 0.75 -> Non tutti 1 o 0
+    #   GAT: 0.79 -> Non tutti 1 o 0
+
+
+
+    # Si cross Weighted, Si sampler, Optimized by f1-Score, usa  the json file to find the best parameters
+    # Safetorch (Mean)
+    #   Graph SAGE: 0.89 -> Non tutti 1 o 0
+    #   RGCN: 0.90 -> Non tutti 1 o 0
+    #   GCN: 0.73 -> Non tutti 1 o 0
+    #   GAT: 0.72 -> Non tutti 1 o 0
+    # Asm2Vec (Mean)
+    #   Graph SAGE: 0.74 -> Non tutti 1 o 0
+    #   RGCN: 0.83 -> Non tutti 1 o 0
+    #   GCN: 0.67 -> Non tutti 1 o 0
+    #   GAT: 0.78 -> Non tutti 1 o 0
+
+
+####################################################################################################################################
+
+
+####################################################################################################################################
+#################################### FINAL BEST RESULTS SUMMARY ####################################################################
+####################################################################################################################################
+
+###################### Safetorch (Mean)
+# GCN:  0.73        -> Setting: No cross Weighted, Si sampler, Optimized by f1-Score, usa  the json file to find the best parameters
+# GAT: 0.82         -> Setting: No cross Weighted, Si sampler, Optimized by f1-Score, usa "analyze_validation_data.py" to find the best parameters (not using the json file)
+# Graph SAGE: 0.92  -> Setting: No cross Weighted, Si sampler, Optimized by f1-Score, usa "analyze_validation_data.py" to find the best parameters (not using the json file)
+# RGCN: 0.90        -> Setting: No cross Weighted, Si sampler, Optimized by Recall, usa "analyze_validation_data.py" to find the best parameters (not using the json file)
+
+###################### Asm2Vec (Mean)
+# GCN: 0.79         -> Setting: No cross Weighted, Si sampler, Optimized by Recall, usa "analyze_validation_data.py" to find the best parameters (not using the json file)
+# GAT: 0.79         -> Setting: Si cross Weighted, Si sampler, Optimized by f1-Score, usa "analyze_validation_data.py" to find the best parameters (not using the json file)
+# Graph SAGE: 0.81  -> Setting: No cross Weighted, Si sampler, Optimized by f1-Score, usa "analyze_validation_data.py" to find the best parameters (not using the json file)
+# RGCN: 0.83        -> Setting: Si cross Weighted, Si sampler, Optimized by f1-Score, usa  the json file to find the best parameters
+
+####################################################################################################################################

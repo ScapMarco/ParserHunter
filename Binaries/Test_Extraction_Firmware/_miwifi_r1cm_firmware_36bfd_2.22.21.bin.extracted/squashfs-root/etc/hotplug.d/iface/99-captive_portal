@@ -1,0 +1,8 @@
+#!/bin/sh
+
+if [ "$ACTION" = "ifup" -a "$INTERFACE" = "wan" ]; then
+    [ -f /usr/sbin/captive_portal.sh ] || return
+    logger -t "captive_portal" "reload captive portal status"
+    # reload captive portal status
+    /usr/sbin/captive_portal.sh reload
+fi

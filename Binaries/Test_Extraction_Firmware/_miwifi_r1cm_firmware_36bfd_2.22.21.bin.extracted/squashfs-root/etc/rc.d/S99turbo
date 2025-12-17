@@ -1,0 +1,58 @@
+#!/bin/sh /etc/rc.common
+
+START=99
+
+EXTRA_COMMANDS=" start_ipv6 start_ccgame stop_ipv6 stop_ccgame"
+EXTRA_HELP=""
+
+CCGAME_service="/usr/sbin/ccgame_service.lua"
+IPV6_service="/usr/sbin/ipv6_service.lua"
+CMD_CCGAME_service="lua $CCGAME_service"
+CMD_IPV6_service="lua $IPV6_service"
+
+start() {
+    #start ccgame
+    [ -f "$CCGAME_service" ] && start_ccgame
+    #ipv6 start triggered by user
+    return 0
+}
+
+stop() {
+    [ -f "$CCGAME_service" ] && stop_ccgame
+    [ -f "$IPV6_service" ] && stop_ipv6
+    return 0
+}
+
+start_ccgame() {
+    export PROCLINE=$CMD_CCGAME_service
+    export PROCFLAG=$PROCLINE
+    /usr/sbin/supervisord start
+
+    return 0
+}
+
+stop_ccgame() {
+    ubus call trubo_ccgame stop
+    export PROCLINE=$CMD_CCGAME_service
+    export PROCFLAG=$PROCLINE
+    /usr/sbin/supervisord stop
+
+    return 0
+}
+
+start_ipv6() {
+    export PROCLINE=$CMD_IPV6_service
+    export PROCFLAG=$PROCLINE
+    /usr/sbin/supervisord start
+
+    return 0
+}
+
+stop_ipv6() {
+    ubus call turbo_ipv6 stop
+    export PROCLINE=$CMD_IPV6_service
+    export PROCFLAG=$PROCLINE
+    /usr/sbin/supervisord stop
+
+    return 0
+}

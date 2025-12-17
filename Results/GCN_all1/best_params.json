@@ -1,0 +1,1 @@
+{"batch_size": 64, "dropout": 0.01, "epochs": 40, "hidden_dim": 16, "input_dim": 1, "learning_rate": 0.1, "output_dim": 2, "weight_decay": 0.0}

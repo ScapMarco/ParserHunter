@@ -1,0 +1,109 @@
+Reported Packcc functions cited in the Paper (Link repo: https://github.com/arithy/packcc/tree/main):
+
+1) True Label 1 functions:
+
+    static bool_t is_valid_utf8_string(const char *str) {
+        int k = 0, n = 0, u = 0;
+        size_t i;
+        for (i = 0; str[i]; i++) {
+            const int c = (int)(unsigned char)str[i];
+            switch (k) {
+            case 0:
+                if (c >= 0x80) {
+                    if ((c & 0xe0) == 0xc0) {
+                        u = c & 0x1f;
+                        n = k = 1;
+                    }
+                    else if ((c & 0xf0) == 0xe0) {
+                        u = c & 0x0f;
+                        n = k = 2;
+                    }
+                    else if ((c & 0xf8) == 0xf0) {
+                        u = c & 0x07;
+                        n = k = 3;
+                    }
+                    else {
+                        return FALSE;
+                    }
+                }
+                break;
+            case 1:
+            case 2:
+            case 3:
+                if ((c & 0xc0) == 0x80) {
+                    u <<= 6;
+                    u |= c & 0x3f;
+                    k--;
+                    if (k == 0) {
+                        switch (n) {
+                        case 1:
+                            if (u < 0x80) return FALSE;
+                            break;
+                        case 2:
+                            if (u < 0x800) return FALSE;
+                            break;
+                        case 3:
+                            if (u < 0x10000 || u > 0x10ffff) return FALSE;
+                            break;
+                        default:
+                            assert(((void)"unexpected control flow", 0));
+                            return FALSE; /* never reached */
+                        }
+                        u = 0;
+                        n = 0;
+                    }
+                }
+                else {
+                    return FALSE;
+                }
+                break;
+            default:
+                assert(((void)"unexpected control flow", 0));
+                return FALSE; /* never reached */
+            }
+        }
+        return (k == 0) ? TRUE : FALSE;
+    }
+
+    static node_t *parse_rule(context_t *ctx) {
+        const size_t p = ctx->bufcur;
+        const size_t l = ctx->linenum;
+        const size_t m = column_number(ctx);
+        const size_t n = ctx->charnum;
+        const size_t o = ctx->linepos;
+        size_t q;
+        node_t *n_r = NULL;
+        if (!match_identifier(ctx)) goto EXCEPTION;
+        q = ctx->bufcur;
+        match_spaces(ctx);
+        if (!match_string(ctx, "<-")) goto EXCEPTION;
+        match_spaces(ctx);
+        n_r = create_node(NODE_RULE);
+        n_r->data.rule.expr = parse_expression(ctx, n_r);
+        if (n_r->data.rule.expr == NULL) goto EXCEPTION;
+        assert(q >= p);
+        n_r->data.rule.name = strndup_e(ctx->buffer.buf + p, q - p);
+        n_r->data.rule.line = l;
+        n_r->data.rule.col = m;
+        return n_r;
+
+
+2) True Label 0 function:
+
+    static void remove_leading_blanks(char *str) {
+        size_t i, j;
+        for (i = 0; str[i]; i++) {
+            if (
+                str[i] != ' '  &&
+                str[i] != '\v' &&
+                str[i] != '\f' &&
+                str[i] != '\t' &&
+                str[i] != '\n' &&
+                str[i] != '\r'
+            ) break;
+        }
+        for (j = 0; str[i]; i++) {
+            str[j++] = str[i];
+        }
+        str[j] = '\0';
+    }

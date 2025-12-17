@@ -1,0 +1,3 @@
+config cfg switch
+    option miqos '0'
+    option rule_mgr '0'

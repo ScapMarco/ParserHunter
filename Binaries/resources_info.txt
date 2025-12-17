@@ -1,0 +1,34 @@
+LINK of all downloaded files:
+
+
+Labeled Datas:
+
+        1) CXMLParser: https://github.com/kiishor/miniML-Parser (compile with: gcc main.c parse_xml.c xml_content.c -o parse_xml)
+
+        2) CSimpleJSONParser: https://github.com/forkachild/C-Simple-JSON-Parser (compile with: gcc example.c json.c -o example)
+
+        3) PicoHTTPParser: https://github.com/h2o/picohttpparser (make sure there are all files "picohttpparser.c", "picotest/picotest.c", and "test.c" then run "make test")
+                                                                 (or gcc picohttpparser.c picotest/picotest.c test.c -o picohttpparser)        
+
+        4) cJSON: https://github.com/DaveGamble/cJSON (compile with: gcc ./cJSON-master/test.c ./cJSON-master/cJSON.c -o cjson) 
+
+        5 ) benoitc http-parserhttp: https://github.com/benoitc/http-parser (gcc main.c http-parser-master/http_parser/http_parser.c -o http_parser)
+
+        6) Yacc calculator tutorial: https://github.com/jengelsma/yacc-tutorial/tree/master ("yacc -d calc.y" "flex calc.l" "gcc -o calc y.tab.c lex.yy.c -lfl" )
+
+        7) Packcc: https://github.com/arithy/packcc/tree/main (compile with: gcc packcc.c -o packcc)
+
+        8) Network-packet-analyzer: https://github.com/natalia-schmidt/network-packet-analyzer (use the compile_script file to produce the binaries)
+        
+        9) PCAP Parser: https://github.com/ilansmith/pcap_parser (use the compile_script file to produce the binaries)
+
+        10) ELF-parser: https://github.com/TheCodeArtist/elf-parser/tree/master (use the compile_script file to produce the binaries)
+
+
+
+Unlabeled Datas:
+    1) Mupdf: https://github.com/ArtifexSoftware/mupdf (follow the instructions in the README file)
+    2) Matrix operations Sparse: https://github.com/jcchurch/C-Linear-Algebra/tree/master  (compiled with gcc -o Sparse Sparse.c Matrix.c List.c) 
+    3) Mi router Firmware: https://miuirom.org/miwifi/mi-router-mini (extracted with binwalk)
+    4) "jasmine" JSON parser in C: https://github.com/zserge/jsmn/tree/master (compile with the make inside of the folder)
+    5) "libcsv" CSV parser written in C: https://github.com/scatmanFATMAN/libcsv (compile with the make inside of the folder)

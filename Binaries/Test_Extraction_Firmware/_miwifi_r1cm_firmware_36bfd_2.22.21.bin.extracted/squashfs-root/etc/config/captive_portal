@@ -1,0 +1,12 @@
+config global 'global'
+        option disabled 'false'
+        option default_interval '86400'
+        option blocked_hosts 'www.msftncsi.com ipv6.msftncsi.com www.msftconnecttest.com ipv6.msftconnecttest.com go.microsoft.com www.msn.com'
+        option timeout '100'
+        option hitcount '4'
+        option checkopint 'true'
+        option hosts_windows 'www.msftncsi.com ipv6.msftncsi.com www.msftconnecttest.com ipv6.msftconnecttest.com go.microsoft.com'
+        option hosts_ios 'captive.apple.com captive.g.aaplimg.com www.appleiphonecell.com www.itools.info www.ibook.info www.airport.us www.thinkdifferent.us'
+        option hosts_android 'connect.rom.miui.com'
+        option config_md5 '12345'
+

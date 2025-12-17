@@ -1,0 +1,66 @@
+#!/bin/sh
+
+BLOCKDEV=$1
+BINNAME=ubfiller.bin
+BINSIZE_MB=$2
+WRITETIME=$3
+READTIME=$4
+
+CACHED_MD5_64=7f614da9329cd3aebf59b91aadc30bf0
+CACHED_MD5_128=fde9e0818281836e4fc0edfede2b8762
+CACHED_MD5_256=1f5039e50bd66b290c56684d8550c6c2
+CACHED_MD5_512=aa559b4e3523a6c931f08f4df52d58f2
+
+usage() {
+	cat <<EOF
+Micro benchmark of read/write speed for block storage
+$(basename $0) [device path] [temp file size in MB] [write time limit] [read time limit]
+EOF
+}
+
+[ $# -lt 4 ] && { usage; exit 1; }
+
+MOUNTPOINT=/tmp/$(basename $BLOCKDEV)_$(dd if=/dev/urandom bs=1 count=16 2>&- | md5sum | awk '{print $1}')
+
+[ -b $BLOCKDEV ] && {
+	mkdir $MOUNTPOINT
+	mount $BLOCKDEV $MOUNTPOINT
+} || {
+	exit 1
+}
+
+echo 3 > /proc/sys/vm/drop_caches
+
+# Write test
+t=$(time sh -c "dd if=/dev/zero of=$MOUNTPOINT/$BINNAME bs=1M count=$BINSIZE_MB 2>&-" 2>&1) && \
+echo $t | awk -F'[a-z ]+' "{printf \"Write %dMB, took %0.2fs\n\",$BINSIZE_MB,\$3; exit !(\$3<=$WRITETIME)}" || {
+	echo "Write failed"
+	exit 1
+}
+
+echo 3 > /proc/sys/vm/drop_caches
+
+# Read test
+t=$(time sh -c "dd if=$MOUNTPOINT/$BINNAME of=/dev/null bs=1M 2>&-" 2>&1) && \
+echo $t | awk -F'[a-z ]+' "{printf \"Read %dMB, took %0.2fs\n\",$BINSIZE_MB,\$3; exit !(\$3<=$READTIME)}" || {
+	echo "Read failed"
+	exit 1
+}
+
+echo 3 > /proc/sys/vm/drop_caches
+
+# MD5 verification test
+md5_cached=$(eval echo \$CACHED_MD5_$BINSIZE_MB)
+[ "$md5_cached" ] && md5_ref=$md5_cached || {
+	md5_ref=$(dd if=/dev/zero bs=1M count=$BINSIZE_MB | md5sum | awk '{print $1}')
+}
+md5=$(md5sum $MOUNTPOINT/$BINNAME | awk '{print $1}')
+[ "$md5" = "$md5_ref" ] || {
+	echo "Verification failed"
+	exit 1
+}
+
+rm $MOUNTPOINT/$BINNAME
+umount $MOUNTPOINT
+rm -r $MOUNTPOINT
+exit 0
