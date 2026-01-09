@@ -93,13 +93,13 @@ The following scripts and notebooks can be used to replicate the plots and table
 - **Table 2:** Distribution of functions per parser library and other training data statistics.
   - Run: `Plots/analyze_training_data.py`
 
-- **Table 4 and Table 8:** Performance comparison of GCN and GAT across different metrics and embedding models.
+- **Table 4, 5 and 9:** Performance comparison of GCN,GAT, GraphSAGE and R-GCN across different metrics and embedding models.
   - Run: `Plots/analyze_validation_data.py`  and `Plots/analyze_grid_search_best_model.py` to produce the csv table `validation.csv` inside each model folder, then filter out by the best parameters (found inside the file `best_params.json`). 
 
-- **Table 5:** Recall of 3 PIE-based baselines.
+- **Table 6:** Recall of 3 PIE-based baselines.
   - Run `Plots/static_code_exploration.ipynb`
   
-- **Table 6 and Table 7:** Recall of SAFE embeddings using KNN and performance comparison of XGBoost and a Neural Network Classifier.
+- **Table 7 and Table 8:** Recall of SAFE embeddings using KNN and performance comparison of XGBoost and a Neural Network Classifier.
   - Run `Plots/safetorch_data_exploration.ipynb`
 
 - **Figure 6:** Reverse cumulative distribution of the prediction consistency across all compilation settings
@@ -108,7 +108,7 @@ The following scripts and notebooks can be used to replicate the plots and table
 - **Figure 7 and 8:** Recall results for different optimization levels for x86-32 and 64 architectures
   - Run: `Plots/compilers_recall_validation_results.ipynb`  
 
-- **Table 9:** Mean Recall results for different LLM and input code representations 
+- **Table 10:** Mean Recall results for different LLM and input code representations 
   - Run: `Plots/analyzed_llm_classifications.ipynb`  
 
 
