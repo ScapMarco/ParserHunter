@@ -1,6 +1,0 @@
-
-config diag 'config'
-	option signal_thr '-60'
-	option iperf_test_thr '25'
-	option usb_write_thr '5.0'
-	option usb_read_thr '3.0'
